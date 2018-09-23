@@ -1,0 +1,13 @@
+---
+
+- name: Setup - Enable Aegir modules
+  shell: "{{ aegir_drush }} --yes @hostmaster en {{ item }}"
+  become: yes
+  become_user: "{{ aegir_user }}"
+  with_items: "{{ aegir_extra_configuration_modules_enable }}"
+
+- name: Setup - Disable Aegir modules
+  shell: "{{ aegir_drush }} --yes @hostmaster dis {{ item }}"
+  become: yes
+  become_user: "{{ aegir_user }}"
+  with_items: "{{ aegir_extra_configuration_modules_disable }}"
